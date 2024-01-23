@@ -7,7 +7,7 @@ EXPOSE 9092
 WORKDIR /app
 
 # Copy the JAR file
-COPY target/sidhu.jar /app/
+COPY /Users/sidhu/eclipse-workspace/TestSpring/target/sidhu.jar /app/
 
 # Command to run your application
 CMD ["java", "-jar", "/app/sidhu.jar"]
