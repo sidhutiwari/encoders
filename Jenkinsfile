@@ -20,11 +20,21 @@ pipeline {
                sh "${MAVEN_HOME}/bin/mvn -f ${PROJECT_DIR}/pom.xml clean install"
             }
         }
-        stage('Deploy') {
+        stage('Build Docker Image') {
             steps {
-                 sh "cp ${PROJECT_DIR}/target/${WAR_FILE_NAME} ${TOMCAT_HOME}/webapps/"
+                script {
+                    docker.build("my-springboot-app:${env.BUILD_ID}")
+                }
             }
         }
+        stage('Deploy') {
+            steps {
+                script {
+                    docker.run("my-springboot-app:${env.BUILD_ID}")
+                }
+            }
+        
+    }
     }
     post {
         success {
