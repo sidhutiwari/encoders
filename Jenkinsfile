@@ -4,6 +4,7 @@ pipeline {
 
     environment {
         // Define environment variables
+        MAVEN_HOME = '/Users/sidhu/apache-maven-3.9.6'
         TOMCAT_HOME = '/Users/sidhu/tomcat'
         PROJECT_DIR = '/Users/sidhu/eclipse-workspace/TestSpring'
         WAR_FILE_NAME = 'sidhu.war'
@@ -17,7 +18,7 @@ pipeline {
         }
         stage('maven') {
             steps {
-               sh "mvn -f ${PROJECT_DIR}/pom.xml clean install"
+               sh "${MAVEN_HOME}/bin/mvn -f ${PROJECT_DIR}/pom.xml clean install"
             }
         }
         stage('build docker image') {
