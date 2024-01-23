@@ -1,4 +1,5 @@
-from openjdk:8
-expose 9092
-add target/sidhu.jar sidhu.jar
-entrypoint ["java", "-jar", "/sidhu.jar"]
+FROM openjdk:8
+EXPOSE  9092
+ARG JAR_FILE=target/sidhu.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
