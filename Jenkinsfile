@@ -4,7 +4,7 @@ pipeline {
 
     environment {
         // Define environment variables
-        MAVEN_HOME = '/Users/sidhu/apache-maven-3.9.6'
+        MAVEN_HOME = '/Users/sidhu/maven'
         TOMCAT_HOME = '/Users/sidhu/tomcat'
         PROJECT_DIR = '/Users/sidhu/eclipse-workspace/TestSpring'
         WAR_FILE_NAME = 'sidhu.war'
