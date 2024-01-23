@@ -1,7 +1,10 @@
 pipeline {
     agent any
 
- 
+ tools {
+        m2_home 'maven 3.9.6'
+       
+    }
     environment {
         // Define environment variables
         MAVEN_HOME = '/Users/sidhu/maven'
