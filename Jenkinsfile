@@ -6,7 +6,7 @@ pipeline {
         MAVEN_HOME = '/Users/sidhu/apache-maven-3.9.6'
         TOMCAT_HOME = '/Users/sidhu/tomcat'
         PROJECT_DIR = '/Users/sidhu/eclipse-workspace/TestSpring'
-        WAR_FILE_NAME = 'TestSpring-0.0.1-SNAPSHOT.war'
+        WAR_FILE_NAME = 'sidhu.war'
     }
 
     stages {
@@ -20,9 +20,13 @@ pipeline {
                sh "${MAVEN_HOME}/bin/mvn -f ${PROJECT_DIR}/pom.xml clean install"
             }
         }
-        stage('Deploy') {
+        stage('build docker image') {
             steps {
-                 sh "cp ${PROJECT_DIR}/target/${WAR_FILE_NAME} ${TOMCAT_HOME}/webapps/"
+            script
+        {
+    sh 'docker build -t sidhu .'
+         }
+                 
             }
         }
     }
