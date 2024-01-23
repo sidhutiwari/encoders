@@ -9,7 +9,7 @@ pipeline {
         PROJECT_DIR = '/Users/sidhu/eclipse-workspace/TestSpring'
         WAR_FILE_NAME = 'sidhu.war'
         DOCKERHUB_USERNAME = 'sidhu01'
-        IMAGE_NAME = 'springapp'
+        IMAGE_NAME = 'encoders'
         TAG = 'latest'
     }
 
@@ -38,10 +38,10 @@ pipeline {
            script {
                     // Login to Docker Hub
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'sidhu01', passwordVariable: 'Ss##120721')]) {
-                        sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
+                        sh "echo ${PASSWORD} | /usr/local/bin/docker login -u ${USERNAME} --password-stdin"
                     }
                     // Push the Docker image to Docker Hub
-                    sh "docker push ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${TAG}"
+                    sh "/usr/local/bin/docker push ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${TAG}"
                 }
                  
                  }
