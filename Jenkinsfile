@@ -24,12 +24,12 @@ pipeline {
         stage('build docker image') {
             steps {
             script
-        {
-    sh 'docker build -t sidhu01/encoders .'
-         }
+                  {
+                sh '/usr/local/bin/docker build -t sidhu01/encoders .'
+                  }
                  
-            }
-        }
+                 }
+                 }
     }
     post {
         success {
