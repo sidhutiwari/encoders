@@ -1,13 +1,16 @@
 FROM openjdk:17
 
+# Add a volume pointing to /tmp
+VOLUME /tmp
+
 # Make port 8080 available to the world outside this container
 EXPOSE 9092
 
-# Create a directory in your image
-WORKDIR /app
+# The application's jar file (adjust the jar file name as per your project's artifactId and version)
+ARG JAR_FILE=/Users/sidhu/eclipse-workspace/TestSpring/target/sidhu.jar
 
-# Copy the JAR file
-COPY /Users/sidhu/eclipse-workspace/TestSpring/target/sidhu.jar /app/
+# Add the application's jar to the container
+ADD ${JAR_FILE} app.jar
 
-# Command to run your application
-CMD ["java", "-jar", "/app/sidhu.jar"]
+# Run the jar file
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
