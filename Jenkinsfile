@@ -2,7 +2,7 @@ pipeline {
     agent any
 
  tools {
-        m2_home 'maven 3.9.6'
+        maven 'maven 3.9.6'
        
     }
     environment {
