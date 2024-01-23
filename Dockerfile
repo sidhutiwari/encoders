@@ -7,7 +7,7 @@ EXPOSE 9092
 WORKDIR /app
 
 # Copy the JAR file into the container
-COPY target/sidhu.jar /app/
+COPY /target/sidhu.jar /app/
 
 # Command to run the application
 CMD ["java", "-jar", "/app/sidhu.jar"]
