@@ -25,7 +25,7 @@ pipeline {
             steps {
             script
         {
-    sh 'docker build -t latest/sidhu .'
+    sh 'docker build -t sidhu01/encoders .'
          }
                  
             }
