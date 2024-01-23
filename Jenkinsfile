@@ -1,11 +1,7 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'maven 3.9.6'
-       
-    }
-    
+ 
     environment {
         // Define environment variables
         MAVEN_HOME = '/Users/sidhu/apache-maven-3.9.6'
