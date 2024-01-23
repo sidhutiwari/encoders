@@ -1,10 +1,7 @@
 pipeline {
     agent any
 
-tools {
-        maven 'Maven 3.9.6'
-        jdk 'Java 17.0.4.1'
-    }
+
     environment {
         // Define environment variables
         TOMCAT_HOME = '/Users/sidhu/tomcat'
