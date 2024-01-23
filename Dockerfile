@@ -4,7 +4,7 @@ EXPOSE  9092
 VOLUME /tmp
 
 # The application's jar file
-ARG JAR_FILE=target/TestSpring-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/sidhu.jar
 
 # Add the application's jar to the container
 ADD ${JAR_FILE} myapp.jar
