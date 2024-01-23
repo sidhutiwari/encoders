@@ -7,7 +7,7 @@ VOLUME /tmp
 ARG JAR_FILE=target/sidhu.jar
 
 # Add the application's jar to the container
-ADD ${JAR_FILE} myapp.jar
+ADD ${JAR_FILE} sidhu.jar
 
 # Run the jar file
-ENTRYPOINT ["java","-jar","/myapp.jar"]
+ENTRYPOINT ["java","-jar","sidhu.jar"]
