@@ -1,15 +1,13 @@
 FROM openjdk:17
-# Add a volume pointing to /tmp
-VOLUME /tmp
 
 # Make port 8080 available to the world outside this container
 EXPOSE 9092
 
-# The application's jar file (adjust the jar file name as per your project's artifactId and version)
-ARG JAR_FILE=target/sidhu.jar
+# Set a working directory in the container
+WORKDIR /app
 
-# Add the application's jar to the container
-ADD ${JAR_FILE} app.jar
+# Copy the JAR file into the container
+COPY target/sidhu.jar /app/
 
-# Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+# Command to run the application
+CMD ["java", "-jar", "/app/sidhu.jar"]
