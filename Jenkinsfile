@@ -28,7 +28,7 @@ pipeline {
             steps {
             script
                   {
-                sh "/usr/local/bin/docker build t ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${TAG} ."
+                sh "/usr/local/bin/docker build -t ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${TAG} ."
                   }
                  
                  }
