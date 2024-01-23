@@ -7,7 +7,7 @@ VOLUME /tmp
 EXPOSE 9092
 
 # The application's jar file (adjust the jar file name as per your project's artifactId and version)
-ARG JAR_FILE=/Users/sidhu/eclipse-workspace/TestSpring/target/sidhu.jar
+ARG JAR_FILE=/target/*.jar
 
 # Add the application's jar to the container
 ADD ${JAR_FILE} app.jar
