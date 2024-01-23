@@ -8,6 +8,9 @@ pipeline {
         TOMCAT_HOME = '/Users/sidhu/tomcat'
         PROJECT_DIR = '/Users/sidhu/eclipse-workspace/TestSpring'
         WAR_FILE_NAME = 'sidhu.war'
+        DOCKERHUB_USERNAME = 'sidhu01'
+        IMAGE_NAME = 'springapp'
+        TAG = 'latest'
     }
 
     stages {
@@ -25,8 +28,21 @@ pipeline {
             steps {
             script
                   {
-                sh '/usr/local/bin/docker build -t sidhu01/encoders .'
+                sh "/usr/local/bin/docker build t ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${TAG} ."
                   }
+                 
+                 }
+                 }
+        stage('deploy image') {
+            steps {
+           script {
+                    // Login to Docker Hub
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'sidhu01', passwordVariable: 'Ss##120721')]) {
+                        sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
+                    }
+                    // Push the Docker image to Docker Hub
+                    sh "docker push ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${TAG}"
+                }
                  
                  }
                  }
