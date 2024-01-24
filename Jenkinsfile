@@ -11,6 +11,7 @@ pipeline {
         DOCKERHUB_USERNAME = 'sidhu01'
         IMAGE_NAME = 'encoders'
         TAG = 'latest'
+        DOCKER_IMAGE = 'my-spring-boot-app:latest'
     }
 
     stages {
@@ -28,7 +29,8 @@ pipeline {
             steps {
             script
                   {
-                sh "/usr/local/bin/docker build -t ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${TAG} ."
+              
+                      sh "docker build -t ${DOCKER_IMAGE} ."
                   }
                  
                  }
