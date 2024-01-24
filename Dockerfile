@@ -6,7 +6,7 @@ VOLUME /tmp
 # Make port 8080 available to the world outside this container
 EXPOSE 9092
 
-COPY target/TestSpring-*.jar /app/sidhu.jar
+COPY ./target/TestSpring-*.jar sidhu.jar
 
 # Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/sidhu.jar"]
