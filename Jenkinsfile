@@ -30,7 +30,7 @@ pipeline {
             script
                   {
               
-                      sh "docker build -t ${DOCKER_IMAGE} ."
+                       sh "/usr/local/bin/docker build -t ${DOCKER_IMAGE} ."
                   }
                  
                  }
