@@ -1,13 +1,13 @@
 FROM openjdk:17
 
-# Add a volume pointing to /tmp
+# Set a working directory
 WORKDIR /app
 
+# Copy the Spring Boot application JAR from the build context to the container
+COPY target/sidhu.jar app.jar
 
-# Make port 8080 available to the world outside this container
+# Expose the port the application runs on
 EXPOSE 9092
 
-COPY ./target/sidhu.jar /app/
-
-# Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/sidhu.jar"]
+# Command to run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
