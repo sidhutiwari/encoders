@@ -8,7 +8,7 @@ pipeline {
 
         // Define environment variables
 
-        MAVEN_HOME = '/Users/sidhu/apache-maven-3.9.6'
+        MAVEN_HOME = '/Users/sidhu/maven'
 
         TOMCAT_HOME = '/Users/sidhu/tomcat'
 
