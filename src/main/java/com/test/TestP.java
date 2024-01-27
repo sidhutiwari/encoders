@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestP {
 	
 	
-	@GetMapping("/santosh")
+	@GetMapping("/pooja")
 	String getValue()
 	{
 		return "test first APi";
