@@ -14,7 +14,7 @@ pipeline {
 
         PROJECT_DIR = '/Users/sidhu/eclipse-workspace/TestSpring'
 
-        WAR_FILE_NAME = 'TestSpring-0.0.1-SNAPSHOT.war'
+        WAR_FILE_NAME = 'sidhu.war'
 
     }
 
