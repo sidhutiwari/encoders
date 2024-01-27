@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestP {
 	
 	
-	@GetMapping("/bitu")
+	@GetMapping("/pooja")
 	String getValue()
 	{
 		return "test first apil";
