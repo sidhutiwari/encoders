@@ -1,60 +1,73 @@
 pipeline {
+
     agent any
 
+    
 
     environment {
+
         // Define environment variables
-        MAVEN_HOME = '/Users/sidhu/maven'
+
+        MAVEN_HOME = '/Users/sidhu/apache-maven-3.9.6'
+
         TOMCAT_HOME = '/Users/sidhu/tomcat'
+
         PROJECT_DIR = '/Users/sidhu/eclipse-workspace/TestSpring'
-        WAR_FILE_NAME = 'sidhu.war'
-        DOCKERHUB_USERNAME = 'sidhu01'
-        IMAGE_NAME = 'encoders'
-        TAG = 'latest'
-        DOCKER_IMAGE = 'my-spring-boot-app:latest'
+
+        WAR_FILE_NAME = 'TestSpring-0.0.1-SNAPSHOT.war'
+
     }
 
+
+
     stages {
+
         stage('git') {
+
             steps {
+
                git branch: 'main', url: 'https://github.com/sidhutiwari/encoders.git'
+
             }
+
         }
+
         stage('maven') {
+
             steps {
+
                sh "${MAVEN_HOME}/bin/mvn -f ${PROJECT_DIR}/pom.xml clean install"
+
             }
+
         }
-        stage('build docker image') {
+
+        stage('Deploy') {
+
             steps {
-            script
-                  {
-              
-                       sh "/usr/local/bin/docker build -t ${DOCKER_IMAGE} ."
-                  }
-                 
-                 }
-                 }
-        stage('deploy image') {
-            steps {
-           script {
-                    // Login to Docker Hub
-                    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'sidhu01', passwordVariable: 'Ss##120721')]) {
-                        sh "echo ${PASSWORD} | /usr/local/bin/docker login -u ${USERNAME} --password-stdin"
-                    }
-                    // Push the Docker image to Docker Hub
-                    sh "/usr/local/bin/docker push ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${TAG}"
-                }
-                 
-                 }
-                 }
+
+                 sh "cp ${PROJECT_DIR}/target/${WAR_FILE_NAME} ${TOMCAT_HOME}/webapps/"
+
+            }
+
+        }
+
     }
+
     post {
+
         success {
+
             echo 'Build and Deployment completed successfully.'
+
         }
+
         failure {
+
             echo 'The build or deployment failed.'
+
         }
+
     }
+
 }
