@@ -21,7 +21,7 @@ pipeline {
             script
                   {
               
-                       sh "/usr/local/bin/docker build -t ${DOCKER_IMAGE} ."
+                       sh "/usr/local/bin/docker build -t ${DOCKER_IMAGE} -f Dockerfile ."
                   }
                  
                  }
