@@ -26,20 +26,11 @@ pipeline {
                  
                  }
                  }
-        stage('deploy image') {
-            steps {
-           script {
-                    // Login to Docker Hub
-                    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'sidhu01', passwordVariable: 'Ss##120721')]) {
-                        sh "echo ${PASSWORD} | /usr/local/bin/docker login -u ${USERNAME} --password-stdin"
-                    }
-                    // Push the Docker image to Docker Hub
-                    sh "/usr/local/bin/docker push ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${TAG}"
-                }
+        
                  
                  }
-                 }
-    }
+                 
+    
     post {
         success {
             echo 'Build and Deployment completed successfully.'
