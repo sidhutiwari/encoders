@@ -15,16 +15,7 @@ pipeline {
     }
 
     stages {
-        stage('git') {
-            steps {
-               git branch: 'main', url: 'https://github.com/sidhutiwari/encoders.git'
-            }
-        }
-        stage('maven') {
-            steps {
-               sh "${MAVEN_HOME}/bin/mvn -f ${PROJECT_DIR}/pom.xml clean install"
-            }
-        }
+       
         stage('build docker image') {
             steps {
             script
